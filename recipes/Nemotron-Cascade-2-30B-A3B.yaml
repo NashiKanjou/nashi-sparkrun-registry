@@ -7,7 +7,7 @@ defaults:
   port: 8000
   host: 0.0.0.0
   tensor_parallel: 1
-  gpu_memory_utilization: 0.8
+  gpu_memory_utilization: 0.85
   max_model_len: 131072
 env:
   VLLM_FLASHINFER_MOE_BACKEND: throughput
