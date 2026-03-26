@@ -15,7 +15,7 @@ defaults:
   port: 8000
   host: 0.0.0.0
   tensor_parallel: 1
-  gpu_memory_utilization: 0.85
+  gpu_memory_utilization: 0.45
   reasoning_parser: qwen3
   tool_call_parser: qwen3_coder
 
