@@ -1,13 +1,13 @@
 model: Jackrong/Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-v2
 runtime: vllm
-container: vllm-tf5
+container: vllm
 
 metadata:
   description: Jackrong/Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-v2
 
 # build_args and mods here are also hints that we're using eugr's repo for builds
-build_args:
-  - "--tf5"
+#build_args:
+#  - "--tf5"
 mods:
   - mods/fix-qwen3.5-chat-template
 
