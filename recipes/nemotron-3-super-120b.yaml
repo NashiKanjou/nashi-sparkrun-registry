@@ -22,7 +22,6 @@ command: |
   --tensor-parallel-size {tensor_parallel} \
   --pipeline-parallel-size {pipeline-parallel} \
   --data-parallel-size 1 \
-  --swap-space 0 \
   --trust-remote-code \
   --attention-backend TRITON_ATTN \
   --gpu-memory-utilization {gpu_memory_utilization} \
