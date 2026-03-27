@@ -18,7 +18,6 @@ command: |
   --pipeline-parallel-size {pipeline-parallel} \
   --data-parallel-size 1 \
   --trust-remote-code \
-  --attention-backend flash_attn \
   --gpu-memory-utilization {gpu_memory_utilization} \
   --enable-chunked-prefill \
   --max-num-seqs {max_num_seqs} \
