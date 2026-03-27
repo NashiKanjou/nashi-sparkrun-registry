@@ -7,31 +7,33 @@ defaults:
   port: 8000
   host: 0.0.0.0
   tensor_parallel: 1
-  gpu_memory_utilization: 0.7
-  max_model_len: 262144
-  max_num_seqs: 10
+  pipeline-parallel: 1
+  gpu_memory_utilization: 0.9
+  max_num_seqs: 512
 env:
   VLLM_NVFP4_GEMM_BACKEND: marlin
   VLLM_TEST_FORCE_FP8_MARLIN: '1'
   VLLM_MARLIN_USE_ATOMIC_ADD: '1'
 command: |
   vllm serve nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-NVFP4 \
+  --async-scheduling \
+  --dtype auto \
   --kv-cache-dtype fp8 \
-  -tp {tensor_parallel} \
+  --tensor-parallel-size {tensor_parallel} \
+  --pipeline-parallel-size {pipeline-parallel} \
+  --data-parallel-size 1 \
+  --swap-space 0 \
   --trust-remote-code \
+  --attention-backend TRITON_ATTN \
   --gpu-memory-utilization {gpu_memory_utilization} \
-  --max-model-len {max_model_len} \
+  --enable-chunked-prefill \
   --max-num-seqs {max_num_seqs} \
-  --enable-prefix-caching \
   --host {host} \
   --port {port} \
   --enable-auto-tool-choice \
-  --load-format fastsafetensors \
   --tool-call-parser qwen3_coder \
-  --reasoning-parser-plugin super_v3_reasoning_parser.py \
-  --reasoning-parser super_v3 \
-  --tensor-parallel-size {tensor_parallel} \
-  --distributed-executor-backend ray
+  --reasoning-parser-plugin "./super_v3_reasoning_parser.py" \
+  --reasoning-parser super_v3
 recipe_version: '1'
 name: Nemotron-3-Super-NVFP4-Marlin-Optimized
 cluster_only: false
