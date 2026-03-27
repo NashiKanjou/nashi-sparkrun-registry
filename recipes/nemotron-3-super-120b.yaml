@@ -29,7 +29,7 @@ command: |
   --tool-call-parser qwen3_coder \
   --reasoning-parser-plugin super_v3_reasoning_parser.py \
   --reasoning-parser super_v3 \
-  --tensor-parallel-size {tensor_parallel} \
+  --tensor-parallel-size {tensor_parallel}
 recipe_version: '1'
 name: Nemotron-3-Super-NVFP4-Marlin-Optimized
 cluster_only: false
