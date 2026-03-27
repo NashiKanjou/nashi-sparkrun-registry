@@ -10,10 +10,6 @@ defaults:
   pipeline-parallel: 1
   gpu_memory_utilization: 0.9
   max_num_seqs: 512
-env:
-  VLLM_NVFP4_GEMM_BACKEND: marlin
-  VLLM_TEST_FORCE_FP8_MARLIN: '1'
-  VLLM_MARLIN_USE_ATOMIC_ADD: '1'
 command: |
   vllm serve nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-NVFP4 \
   --async-scheduling \
