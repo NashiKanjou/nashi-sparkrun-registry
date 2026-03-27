@@ -18,12 +18,12 @@ command: |
   vllm serve nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-NVFP4 \
   --async-scheduling \
   --dtype auto \
-  --kv-cache-dtype fp8 \
+  --kv-cache-dtype float16 \
   --tensor-parallel-size {tensor_parallel} \
   --pipeline-parallel-size {pipeline-parallel} \
   --data-parallel-size 1 \
   --trust-remote-code \
-  --attention-backend TRITON_ATTN \
+  --attention-backend flash-attn \
   --gpu-memory-utilization {gpu_memory_utilization} \
   --enable-chunked-prefill \
   --max-num-seqs {max_num_seqs} \
