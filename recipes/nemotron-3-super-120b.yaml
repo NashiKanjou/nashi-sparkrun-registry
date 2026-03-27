@@ -1,4 +1,4 @@
-description: vLLM serving Nemotron-3-Super-120B using Marlin kernels
+description: vLLM serving Nemotron-3-Super-120B
 model: nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-NVFP4
 container: vllm-node
 mods:
@@ -35,6 +35,6 @@ command: |
   --reasoning-parser-plugin "./super_v3_reasoning_parser.py" \
   --reasoning-parser super_v3
 recipe_version: '1'
-name: Nemotron-3-Super-NVFP4-Marlin-Optimized
+name: Nemotron-3-Super-NVFP4
 cluster_only: false
 solo_only: false
