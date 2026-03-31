@@ -21,7 +21,6 @@ container: vllm-node
 defaults:
   port: 8000
   host: 0.0.0.0
-  tensor_parallel: 1
   gpu_memory_utilization: 0.8
   max_model_len: 262144
   max_num_seqs: 10
@@ -42,5 +41,4 @@ command: |
   --tool-call-parser qwen3_coder \
   --reasoning-parser-plugin super_v3_reasoning_parser.py \
   --reasoning-parser super_v3 \
-  --tensor-parallel-size {tensor_parallel} \
   --distributed-executor-backend ray
