@@ -13,6 +13,7 @@ mods:
   - mods/nemotron-super
 
 env:
+  HF_HOME: /tmp/hf
   VLLM_ALLOW_LONG_MAX_MODEL_LEN: 1
   VLLM_USE_FLASHINFER_MOE_FP4: 0
   VLLM_NVFP4_GEMM_BACKEND: marlin
