@@ -1,5 +1,4 @@
-# Recipe: Nemotron-3-Super-NVFP4
-# Uses VLLM_CUTLASS for NVFP4
+# Recipe: Nemotron-3-Super
 recipe_version: "1"
 name: Nemotron-3-Super
 description: vLLM serving Nemotron-3-Super-120B
@@ -13,7 +12,6 @@ mods:
   - mods/nemotron-super
 
 env:
-  HF_HOME: /tmp/hf
   VLLM_ALLOW_LONG_MAX_MODEL_LEN: 1
   VLLM_USE_FLASHINFER_MOE_FP4: 0
   VLLM_NVFP4_GEMM_BACKEND: marlin
@@ -36,6 +34,7 @@ command: |
   --max-model-len {max_model_len} \
   --max-num-seqs {max_num_seqs} \
   --enable-prefix-caching \
+  --enforce-eager \
   --host {host} \
   --port {port} \
   --enable-auto-tool-choice \
