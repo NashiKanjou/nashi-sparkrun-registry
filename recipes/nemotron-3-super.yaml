@@ -1,15 +1,15 @@
 # Recipe: Nemotron-3-Super
 recipe_version: "1"
 name: Nemotron-3-Super
-description: vLLM serving Nemotron-3-Super-120B
+description: vLLM serving Nemotron-3-Super-120B (testing)
 
 model: nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-NVFP4
 container: vllm-node
 cluster_only: false
 solo_only: false
 
-mods: 
-  - mods/nemotron-super
+#mods: 
+#  - mods/nemotron-super
 
 env:
   VLLM_ALLOW_LONG_MAX_MODEL_LEN: 1
