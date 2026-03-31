@@ -12,10 +12,11 @@ solo_only: false
 #  - mods/nemotron-super
 
 env:
-  VLLM_ALLOW_LONG_MAX_MODEL_LEN: 1
-  VLLM_USE_FLASHINFER_MOE_FP4: 0
-  VLLM_NVFP4_GEMM_BACKEND: marlin
-  VLLM_TEST_FORCE_FP8_MARLIN: 1
+  VLLM_NVFP4_GEMM_BACKEND: "marlin"
+  VLLM_TEST_FORCE_FP8_MARLIN: "1"
+  VLLM_MARLIN_USE_ATOMIC_ADD: "1"
+  VLLM_ALLOW_LONG_MAX_MODEL_LEN: "1"
+  VLLM_USE_FLASHINFER_MOE_FP4: "0"
 
 container: vllm-node
 defaults:
@@ -42,5 +43,4 @@ command: |
   --reasoning-parser nemotron_v3 \
   --mamba_ssm_cache_dtype float16 \
   --tensor-parallel-size {tensor_parallel} \
-  --attention-backend TRITON_ATTN \
   --distributed-executor-backend ray
