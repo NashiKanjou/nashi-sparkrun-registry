@@ -39,6 +39,5 @@ command: |
   --enable-auto-tool-choice \
   --load-format fastsafetensors \
   --tool-call-parser qwen3_coder \
-  --reasoning-parser-plugin super_v3_reasoning_parser.py \
-  --reasoning-parser super_v3 \
+  --reasoning-parser nemotron_v3 \
   --distributed-executor-backend ray
