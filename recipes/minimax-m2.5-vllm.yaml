@@ -28,7 +28,7 @@ env: {}
 
 # The vLLM serve command template
 command: |
-  vllm serve nvidia/MiniMax-M2.5-NVFP4 \
+  vllm serve {model} \
       --kv-cache-dtype fp8 \
       --trust-remote-code \
       --port {port} \
