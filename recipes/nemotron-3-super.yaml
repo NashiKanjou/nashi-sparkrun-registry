@@ -8,8 +8,8 @@ container: vllm-node
 cluster_only: false
 solo_only: false
 
-#mods: 
-#  - mods/nemotron-super
+mods: 
+  - mods/nemotron-super
 
 env:
   VLLM_NVFP4_GEMM_BACKEND: "marlin"
