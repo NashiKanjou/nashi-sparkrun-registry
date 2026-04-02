@@ -2,11 +2,11 @@
 # MiniMax M2.5 model with AWQ quantization
 
 recipe_version: "1"
-name: MiniMax-M2.5-AWQ
+name: MiniMax-M2.5
 description: vLLM serving MiniMax-M2.5-AWQ with Ray distributed backend
 
 # HuggingFace model to download (optional, for --download-model)
-model: cyankiwi/MiniMax-M2.5-AWQ-4bit
+model: nvidia/MiniMax-M2.5-NVFP4
 
 # Container image to use
 container: vllm-node
@@ -22,15 +22,15 @@ defaults:
   port: 8000
   host: 0.0.0.0
   tensor_parallel: 1
-  gpu_memory_utilization: 0.7
-  max_model_len: 128000
+  gpu_memory_utilization: 0.8
+  max_model_len: 64000
 
 # Environment variables
 env: {}
 
 # The vLLM serve command template
 command: |
-  vllm serve cyankiwi/MiniMax-M2.5-AWQ-4bit \
+  vllm serve nvidia/MiniMax-M2.5-NVFP4 \
       --trust-remote-code \
       --port {port} \
       --host {host} \
