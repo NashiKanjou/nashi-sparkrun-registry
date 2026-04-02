@@ -1,0 +1,43 @@
+recipe_version: "1"
+name: MiniMax-M2.5
+description: vLLM serving MiniMax-M2.5
+
+# HuggingFace model to download (optional, for --download-model)
+model: cyankiwi/MiniMax-M2.5-REAP-139B-A10B-AWQ-4bit
+
+# Container image to use
+container: vllm-node
+
+# Can only be run in a cluster
+cluster_only: false
+solo_only: false
+
+# No mods required
+mods: []
+
+# Default settings (can be overridden via CLI)
+defaults:
+  port: 8000
+  host: 0.0.0.0
+  tensor_parallel: 1
+  gpu_memory_utilization: 0.8
+  max_model_len: 128000
+
+# Environment variables
+env: {}
+
+# The vLLM serve command template
+command: |
+  vllm serve nvidia/MiniMax-M2.5-NVFP4 \
+      --kv-cache-dtype fp8 \
+      --trust-remote-code \
+      --port {port} \
+      --host {host} \
+      --gpu-memory-utilization {gpu_memory_utilization} \
+      -tp {tensor_parallel} \
+      --distributed-executor-backend ray \
+      --max-model-len {max_model_len} \
+      --load-format fastsafetensors \
+      --enable-auto-tool-choice \
+      --tool-call-parser minimax_m2 \
+      --reasoning-parser minimax_m2
