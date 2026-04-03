@@ -27,7 +27,6 @@ defaults:
 command: |
   vllm serve {model} \
   --kv-cache-dtype fp8 \
-  --moe-backend cutlass \
   --quantization fp8 \
   --trust-remote-code \
   --gpu-memory-utilization {gpu_memory_utilization} \
