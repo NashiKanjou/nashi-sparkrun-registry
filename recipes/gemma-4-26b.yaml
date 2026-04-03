@@ -4,7 +4,7 @@ name: Gemma 4-26B
 description: Google Gemma 4 26B serve with vllm
 
 model: google/gemma-4-26B-A4B-it
-container: vllm-node
+container: vllm-node-tf5
 cluster_only: false
 solo_only: false
 
