@@ -4,13 +4,12 @@ name: Gemma 4-26B
 description: Google Gemma 4 26B serve with vllm
 
 model: google/gemma-4-26B-A4B-it
-container: vllm-node-tf5
+container: vllm-node-20260402-tf5-pr35568
 cluster_only: false
 solo_only: false
 
 
 env:
-  VLLM_FLASHINFER_ALLREDUCE_BACKEND: trtllm
   VLLM_ALLOW_LONG_MAX_MODEL_LEN: 1
 
 container: vllm-node
