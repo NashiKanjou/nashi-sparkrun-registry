@@ -17,14 +17,14 @@ defaults:
   port: 8000
   host: 0.0.0.0
   tensor_parallel: 1
-  gpu_memory_utilization: 0.7
+  gpu_memory_utilization: 0.8
   max_model_len: 262144
   max_num_seqs: 10
 
 command: |
   vllm serve {model} \
   --kv-cache-dtype fp8 \
-  --moe-backend cutlass \
+  --quantization fp8 \
   --trust-remote-code \
   --gpu-memory-utilization {gpu_memory_utilization} \
   --max-model-len {max_model_len} \
@@ -35,8 +35,6 @@ command: |
   --enable-auto-tool-choice \
   --enable-chunked-prefill \
   --load-format fastsafetensors \
-  --tool-call-parser pythonic \
+  --tool-call-parser gemma4 \
   --reasoning-parser gemma4 \
-  --tensor-parallel-size {tensor_parallel} \
-  --attention-backend TRITON_ATTN \
-  --distributed-executor-backend ray
+  --tensor-parallel-size {tensor_parallel}
