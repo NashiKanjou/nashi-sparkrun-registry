@@ -1,27 +1,20 @@
 # Recipe: Gemma4 
 recipe_version: "2"
 name: Gemma 4-26B
-runtime: vllm
-container: ghcr.io/spark-arena/dgx-vllm-eugr-nightly-tf5:latest
-
 metadata:
   description: Google Gemma 4 26B serve with vllm
   
-model: google/gemma-4-26B-A4B-it
 runtime: vllm
+container: vllm-node-tf5
+
+model: google/gemma-4-26B-A4B-it
+
 cluster_only: false
 solo_only: false
-
-# using the Spark Arena eugr nightly container will signal sparkrun to use @eugr's latest release
-container: ghcr.io/spark-arena/dgx-vllm-eugr-nightly-tf5:latest
-
-build_args:
-  - --tf5
 
 env:
   VLLM_ALLOW_LONG_MAX_MODEL_LEN: 1
 
-container: vllm-node
 defaults:
   port: 8000
   host: 0.0.0.0
