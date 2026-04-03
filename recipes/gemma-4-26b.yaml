@@ -13,6 +13,7 @@ cluster_only: false
 solo_only: false
 
 env:
+  VLLM_FLASHINFER_ALLREDUCE_BACKEND: trtllm
   VLLM_ALLOW_LONG_MAX_MODEL_LEN: 1
 
 defaults:
