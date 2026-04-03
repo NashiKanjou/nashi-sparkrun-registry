@@ -5,7 +5,7 @@ description: Google Gemma 4 26B serve with vllm
 
 model: google/gemma-4-26B-A4B-it
 runtime: vllm
-container: vllm-node-20260402-tf5-pr35568
+container_image: vllm-node-20260402-tf5-pr35568
 cluster_only: false
 solo_only: false
 
