@@ -28,7 +28,6 @@ command: |
   vllm serve {model} \
   --kv-cache-dtype fp8 \
   --quantization fp8 \
-  --moe-backend cutlass \
   --trust-remote-code \
   --gpu-memory-utilization {gpu_memory_utilization} \
   --max-model-len {max_model_len} \
