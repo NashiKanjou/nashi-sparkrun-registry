@@ -28,6 +28,7 @@ command: |
   vllm serve {model} \
   --kv-cache-dtype fp8 \
   --quantization fp8 \
+  --moe-backend cutlass \
   --trust-remote-code \
   --gpu-memory-utilization {gpu_memory_utilization} \
   --max-model-len {max_model_len} \
@@ -35,6 +36,7 @@ command: |
   --enable-prefix-caching \
   --host {host} \
   --port {port} \
+  --enforce-eager \
   --enable-auto-tool-choice \
   --enable-chunked-prefill \
   --load-format fastsafetensors \
