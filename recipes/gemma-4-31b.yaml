@@ -2,9 +2,9 @@
 recipe_version: "2"
 name: Gemma 4-31B
 metadata:
-  description: Google Gemma 4 31B serve with vllm
+  description: Google Gemma 4 31B serve with vllm (NVFP4)
   
-model: google/gemma-4-31B-it
+model: nvidia/Gemma-4-31B-IT-NVFP4
 
 runtime: vllm
 container: vllm-node-tf5
@@ -20,7 +20,7 @@ defaults:
   port: 8000
   host: 0.0.0.0
   tensor_parallel: 1
-  gpu_memory_utilization: 0.65
+  gpu_memory_utilization: 0.7
   max_model_len: 262144
   max_num_seqs: 10
 
