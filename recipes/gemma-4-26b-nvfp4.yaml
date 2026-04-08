@@ -13,33 +13,25 @@ cluster_only: false
 solo_only: false
 
 env:
-  VLLM_FLASHINFER_ALLREDUCE_BACKEND: trtllm
   VLLM_ALLOW_LONG_MAX_MODEL_LEN: 1
   VLLM_NVFP4_GEMM_BACKEND: marlin
   
 defaults:
   port: 8000
   host: 0.0.0.0
-  tensor_parallel: 1
-  gpu_memory_utilization: 0.65
+  gpu_memory_utilization: 0.6
   max_model_len: 256000
-  max_num_seqs: 10
+  max_num_seqs: 4
 
 command: |
   vllm serve {model} \
   --kv-cache-dtype fp8 \
   --trust-remote-code \
+  --dtype auto \
   --moe-backend marlin \
   --quantization modelopt \
   --gpu-memory-utilization {gpu_memory_utilization} \
   --max-model-len {max_model_len} \
   --max-num-seqs {max_num_seqs} \
-  --enable-prefix-caching \
   --host {host} \
-  --port {port} \
-  --enable-auto-tool-choice \
-  --enable-chunked-prefill \
-  --load-format fastsafetensors \
-  --tool-call-parser gemma4 \
-  --reasoning-parser gemma4 \
-  --tensor-parallel-size {tensor_parallel}
+  --port {port}
