@@ -12,6 +12,9 @@ model: bg-digitalservices/Gemma-4-26B-A4B-it-NVFP4
 cluster_only: false
 solo_only: false
 
+mods:
+  - mods/gemma4
+
 env:
   VLLM_ALLOW_LONG_MAX_MODEL_LEN: 1
   VLLM_NVFP4_GEMM_BACKEND: marlin
