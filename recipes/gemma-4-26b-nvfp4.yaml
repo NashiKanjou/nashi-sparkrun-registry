@@ -19,7 +19,7 @@ env:
 defaults:
   port: 8000
   host: 0.0.0.0
-  gpu_memory_utilization: 0.6
+  gpu_memory_utilization: 0.62
   max_model_len: 256000
   max_num_seqs: 4
 
