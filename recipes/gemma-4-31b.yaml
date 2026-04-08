@@ -23,7 +23,7 @@ defaults:
   host: 0.0.0.0
   tensor_parallel: 1
   gpu_memory_utilization: 0.8
-  max_model_len: 145000
+  max_model_len: 135168
   max_num_seqs: 2
 
 command: |
