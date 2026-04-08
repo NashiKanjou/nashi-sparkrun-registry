@@ -35,7 +35,6 @@ command: |
   --enable-prefix-caching \
   --host {host} \
   --port {port} \
-  --enforce-eager \
   --enable-auto-tool-choice \
   --enable-chunked-prefill \
   --load-format fastsafetensors \
