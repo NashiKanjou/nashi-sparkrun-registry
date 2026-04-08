@@ -1,0 +1,44 @@
+# Recipe: Gemma4 
+recipe_version: "2"
+name: Gemma 4-26B
+metadata:
+  description: Google Gemma 4 26B serve with vllm
+  
+runtime: vllm
+container: vllm-node-tf5
+
+model: bg-digitalservices/Gemma-4-26B-A4B-it-NVFP4
+
+cluster_only: false
+solo_only: false
+
+env:
+  VLLM_FLASHINFER_ALLREDUCE_BACKEND: trtllm
+  VLLM_ALLOW_LONG_MAX_MODEL_LEN: 1
+
+defaults:
+  port: 8000
+  host: 0.0.0.0
+  tensor_parallel: 1
+  gpu_memory_utilization: 0.80
+  max_model_len: 256000
+  max_num_seqs: 10
+
+command: |
+  vllm serve {model} \
+  --kv-cache-dtype fp8 \
+  --quantization fp8 \
+  --trust-remote-code \
+  --gpu-memory-utilization {gpu_memory_utilization} \
+  --max-model-len {max_model_len} \
+  --max-num-seqs {max_num_seqs} \
+  --enable-prefix-caching \
+  --host {host} \
+  --port {port} \
+  --enforce-eager \
+  --enable-auto-tool-choice \
+  --enable-chunked-prefill \
+  --load-format fastsafetensors \
+  --tool-call-parser gemma4 \
+  --reasoning-parser gemma4 \
+  --tensor-parallel-size {tensor_parallel}
