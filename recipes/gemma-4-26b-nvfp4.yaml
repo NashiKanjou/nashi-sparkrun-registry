@@ -4,37 +4,41 @@ name: Gemma 4-26B
 metadata:
   description: Google Gemma 4 26B serve with vllm
   
+model: RedHatAI/gemma-4-26B-A4B-it-NVFP4
+
+
 runtime: vllm
 container: vllm-node-tf5
-
-model: RedHatAI/gemma-4-26B-A4B-it-NVFP4
 
 cluster_only: false
 solo_only: false
 
-mods:
-  - mods/gemma4
-
 env:
+  VLLM_FLASHINFER_ALLREDUCE_BACKEND: trtllm
   VLLM_ALLOW_LONG_MAX_MODEL_LEN: 1
-  VLLM_NVFP4_GEMM_BACKEND: marlin
-  
+
 defaults:
   port: 8000
   host: 0.0.0.0
-  gpu_memory_utilization: 0.62
-  max_model_len: 256000
-  max_num_seqs: 4
+  tensor_parallel: 1
+  gpu_memory_utilization: 0.75
+  max_model_len: 131850
+  max_num_seqs: 2
 
 command: |
   vllm serve {model} \
   --kv-cache-dtype fp8 \
+  --quantization fp8 \
   --trust-remote-code \
-  --dtype auto \
-  --moe-backend marlin \
-  --quantization modelopt \
   --gpu-memory-utilization {gpu_memory_utilization} \
   --max-model-len {max_model_len} \
   --max-num-seqs {max_num_seqs} \
+  --enable-prefix-caching \
   --host {host} \
-  --port {port}
+  --port {port} \
+  --enable-auto-tool-choice \
+  --enable-chunked-prefill \
+  --load-format fastsafetensors \
+  --tool-call-parser gemma4 \
+  --reasoning-parser gemma4 \
+  --tensor-parallel-size {tensor_parallel}
