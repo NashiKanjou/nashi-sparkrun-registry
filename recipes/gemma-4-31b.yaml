@@ -22,7 +22,7 @@ defaults:
   tensor_parallel: 1
   gpu_memory_utilization: 0.75
   max_model_len: 131000
-  max_num_seqs: 10
+  max_num_seqs: 2
 
 command: |
   vllm serve {model} \
