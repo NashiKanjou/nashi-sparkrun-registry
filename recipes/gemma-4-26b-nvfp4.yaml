@@ -7,7 +7,7 @@ metadata:
 runtime: vllm
 container: vllm-node-tf5
 
-model: bg-digitalservices/Gemma-4-26B-A4B-it-NVFP4
+model: RedHatAI/gemma-4-26B-A4B-it-NVFP4
 
 cluster_only: false
 solo_only: false
