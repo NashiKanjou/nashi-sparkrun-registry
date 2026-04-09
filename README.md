@@ -9,5 +9,9 @@ Working:
 - gemma-4-31b
 
 
+Testing:
+- gemma-4-31b-redhat
+- gemma-4-31b-awq
+
 Not Working:
-- gemma-4-26b-nvfp4
+- gemma-4-26b-nvfp4  (prob need patch PR for vllm?)
