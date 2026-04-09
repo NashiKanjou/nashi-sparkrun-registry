@@ -23,7 +23,8 @@ defaults:
   host: 0.0.0.0
   tensor_parallel: 1
   gpu_memory_utilization: 0.8
-  max_model_len: 135168
+  max_model_len: 262144
+  max_num_batched_tokens: 8192
   max_num_seqs: 10
 
 command: |
@@ -33,6 +34,7 @@ command: |
   --gpu-memory-utilization {gpu_memory_utilization} \
   --max-model-len {max_model_len} \
   --max-num-seqs {max_num_seqs} \
+  --max-num-batched-tokens {max_num_batched_tokens} \
   --enable-prefix-caching \
   --host {host} \
   --port {port} \
