@@ -11,7 +11,7 @@ Working:
 
 Testing:
 - gemma-4-31b-awq
-- Qwen3.6-35B-A3B-FP8.yaml
+- qwen3.6-35b-a3b
 
 Not Working:
 - gemma-4-26b-nvfp4  (prob need patch PR for vllm?)
