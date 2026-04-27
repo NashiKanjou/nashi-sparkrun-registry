@@ -13,15 +13,16 @@ container: vllm-node-tf5
 cluster_only: false
 solo_only: false
 
-env:
-  VLLM_FLASHINFER_ALLREDUCE_BACKEND: trtllm
-  VLLM_ALLOW_LONG_MAX_MODEL_LEN: 1
+mods:
+  - mods/fix-gemma4-tool-parser
+  
+env: {}
 
 defaults:
   port: 8000
   host: 0.0.0.0
   tensor_parallel: 1
-  gpu_memory_utilization: 0.62
+  gpu_memory_utilization: 0.7
   max_model_len: 256000
   max_num_seqs: 2
 
@@ -33,11 +34,11 @@ command: |
   --max-model-len {max_model_len} \
   --max-num-seqs {max_num_seqs} \
   --enable-prefix-caching \
-  --host {host} \
-  --port {port} \
+  --load-format instanttensor \
+  --enable-prefix-caching \
   --enable-auto-tool-choice \
-  --enable-chunked-prefill \
-  --load-format fastsafetensors \
   --tool-call-parser gemma4 \
   --reasoning-parser gemma4 \
+  --host {host} \
+  --port {port} \
   --tensor-parallel-size {tensor_parallel}
