@@ -25,7 +25,8 @@ defaults:
   gpu_memory_utilization: 0.7
   max_model_len: 256000
   max_num_seqs: 2
-
+  max_num_batched_tokens: 8192
+  
 command: |
   vllm serve {model} \
   --kv-cache-dtype fp8 \
