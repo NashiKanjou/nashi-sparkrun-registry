@@ -22,7 +22,8 @@ defaults:
   attention_backend: flashinfer
   tool_call_parser: qwen3_coder
   reasoning_parser: qwen3
-
+  model_name: qwen3.6-35b-a3b
+  
 env:
   VLLM_MARLIN_USE_ATOMIC_ADD: "1"
 
@@ -30,6 +31,7 @@ command: |
   vllm serve {model} \
     --host {host} \
     --port {port} \
+    --served-model-name {model_name}\
     --max-model-len {max_model_len} \
     --max-num-batched-tokens {max_num_batched_tokens} \
     --gpu-memory-utilization {gpu_memory_utilization} \
