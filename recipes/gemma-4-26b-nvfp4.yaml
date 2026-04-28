@@ -19,6 +19,7 @@ mods:
 env: {}
 
 defaults:
+  name: gemma-4-26b-a4b
   port: 8000
   host: 0.0.0.0
   tensor_parallel: 1
@@ -29,6 +30,7 @@ defaults:
   
 command: |
   vllm serve {model} \
+  --served-model-name {name}\
   --kv-cache-dtype fp8 \
   --trust-remote-code \
   --gpu-memory-utilization {gpu_memory_utilization} \
