@@ -42,4 +42,5 @@ command: |
   --reasoning-parser gemma4 \
   --host {host} \
   --port {port} \
+  --max-num-batched-tokens {max_num_batched_tokens} \
   --tensor-parallel-size {tensor_parallel}
