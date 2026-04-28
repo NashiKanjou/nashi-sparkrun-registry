@@ -30,7 +30,7 @@ defaults:
   
 command: |
   vllm serve {model} \
-  --served-model-name {model_name}\
+  --served-model-name {model_name} \
   --kv-cache-dtype fp8 \
   --trust-remote-code \
   --gpu-memory-utilization {gpu_memory_utilization} \
