@@ -31,7 +31,7 @@ command: |
   vllm serve {model} \
     --host {host} \
     --port {port} \
-    --served-model-name {model_name}\
+    --served-model-name {model_name} \
     --max-model-len {max_model_len} \
     --max-num-batched-tokens {max_num_batched_tokens} \
     --gpu-memory-utilization {gpu_memory_utilization} \
