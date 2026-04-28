@@ -11,7 +11,7 @@ container: vllm-node-tf5
 
 cluster_only: false
 solo_only: false
-
+  
 env:
   VLLM_FLASHINFER_ALLREDUCE_BACKEND: trtllm
   VLLM_ALLOW_LONG_MAX_MODEL_LEN: 1
@@ -19,6 +19,7 @@ env:
   VLLM_NVFP4_GEMM_BACKEND: marlin
 
 defaults:
+  model_name: gemma-4-31b
   port: 8000
   host: 0.0.0.0
   tensor_parallel: 1
@@ -28,6 +29,7 @@ defaults:
 
 command: |
   vllm serve {model} \
+  --served-model-name {model_name}\
   --kv-cache-dtype fp8 \
   --trust-remote-code \
   --gpu-memory-utilization {gpu_memory_utilization} \
