@@ -17,6 +17,7 @@ env:
   VLLM_ALLOW_LONG_MAX_MODEL_LEN: 1
 
 defaults:
+  model_name: nemotron-3-120b-a12b
   port: 8000
   host: 0.0.0.0
   tensor_parallel: 1
@@ -25,7 +26,8 @@ defaults:
   max_num_seqs: 10
 
 command: |
-  vllm serve nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-NVFP4 \
+  vllm serve {model} \
+  --served-model-name {model_name}\
   --kv-cache-dtype fp8 \
   --moe-backend cutlass \
   --trust-remote-code \
