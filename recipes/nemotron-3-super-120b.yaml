@@ -27,7 +27,7 @@ defaults:
 
 command: |
   vllm serve {model} \
-  --served-model-name {model_name}\
+  --served-model-name {model_name} \
   --kv-cache-dtype fp8 \
   --moe-backend cutlass \
   --trust-remote-code \
