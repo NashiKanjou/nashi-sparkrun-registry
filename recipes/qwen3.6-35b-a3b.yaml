@@ -7,7 +7,7 @@ metadata:
   description: Qwen3.6-35B-A3B-FP8 — native FP8 format
 
 mods:
-  - mods/fix-qwen3-coder-next
+  - mods/fix-qwen3.6-chat-template
 
 defaults:
   port: 8000
@@ -20,7 +20,7 @@ defaults:
   load_format: fastsafetensors
   kv_cache_dtype: fp8
   attention_backend: flashinfer
-  tool_call_parser: qwen3_coder
+  tool_call_parser: qwen3_xml
   reasoning_parser: qwen3
   model_name: qwen3.6-35b-a3b
   
