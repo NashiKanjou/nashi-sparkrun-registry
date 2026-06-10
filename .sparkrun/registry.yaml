@@ -2,4 +2,4 @@ registries:
   - name: nashi-sparkrun
     description: My recipes for DGX Spark
     recipes: recipes
-    mods: mods 
+    mods: mods
