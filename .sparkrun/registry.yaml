@@ -2,10 +2,6 @@ registries:
   - name: nashi-sparkrun
     description: My recipes for DGX Spark
     recipes: recipes
+    tuning: ""
+    benchmarks: ""
     mods: mods
-
-  - name: nashi-sparkrun-test
-    description: My recipes for DGX Spark
-    recipes: experimental/recipes
-    mods: experimental/mods
-    visible: false
