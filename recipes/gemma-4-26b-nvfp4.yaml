@@ -13,9 +13,6 @@ container: vllm-node-tf5
 cluster_only: false
 solo_only: false
 
-mods:
-  - mods/fix-gemma4-tool-parser
-  
 env: {}
 
 defaults:
