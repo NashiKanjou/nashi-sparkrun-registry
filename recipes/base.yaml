@@ -29,22 +29,23 @@ defaults:
   kv_cache_dtype: fp8
   attention_backend: flashinfer
   model_name: base_model
+  tool_call_parser: gemma4
+  reasoning_parser: gemma4
 
 command: |
   vllm serve {path} \
-  --kv-cache-dtype fp8 \
-  --trust-remote-code \
-  --gpu-memory-utilization {gpu_memory_utilization} \
-  --max-model-len auto \
-  --max-num-seqs {max_num_seqs} \
-  --max-num-batched-tokens {max_num_batched_tokens} \
-  --enable-prefix-caching \
-  --host {host} \
-  --port {port} \
-  --enable-auto-tool-choice \
-  --enable-chunked-prefill \
-  --load-format fastsafetensors \
-  --tool-call-parser gemma4 \
-  --reasoning-parser gemma4 \
-  --enforce-eager \
-  --tensor-parallel-size {tensor_parallel}
+    --host {host} \
+    --port {port} \
+    --served-model-name {model_name} \
+    --max-model-len {max_model_len} \
+    --max-num-batched-tokens {max_num_batched_tokens} \
+    --gpu-memory-utilization {gpu_memory_utilization} \
+    --enable-auto-tool-choice \
+    --tool-call-parser {tool_call_parser} \
+    --reasoning-parser {reasoning_parser} \
+    --kv-cache-dtype {kv_cache_dtype} \
+    --load-format {load_format} \
+    --attention-backend {attention_backend} \
+    --enable-prefix-caching \
+    -tp {tensor_parallel} \
+    -pp {pipeline_parallel}
