@@ -20,7 +20,7 @@ defaults:
   host: 0.0.0.0
   tensor_parallel: 1
   pipeline_parallel: 1
-  gpu_memory_utilization: 0.5
+  gpu_memory_utilization: 0.4
   max_model_len: 131072
   max_num_batched_tokens: 8192
   load_format: fastsafetensors
