@@ -1,16 +1,17 @@
 # Recipe: Gemma4 
 recipe_version: "2"
 name: base
-metadata:
-  description: finetuned model
 
 model: /home/nashi/llm_training/model/merged-gemma4-12B
 
 runtime: vllm
 container: vllm-node
 
-cluster_only: false
-solo_only: false
+metadata:
+  description: finetuned model
+  maintainer: CHL <kenny8379@gmail.com>
+  model_params: 12B
+  model_dtype: bf16
 
 env:
   VLLM_MARLIN_USE_ATOMIC_ADD: "1"
