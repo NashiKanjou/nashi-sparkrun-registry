@@ -1,0 +1,49 @@
+# Recipe: Gemma4 
+recipe_version: "2"
+name: base
+metadata:
+  description: base model before finetune
+
+#/home/nashi/llm_training/model/merged-gemma4-12B
+model: /home/nashi/llm_training/model/base/gemma-4-12B
+
+runtime: vllm
+container: vllm-node
+
+cluster_only: false
+solo_only: false
+
+env:
+  VLLM_MARLIN_USE_ATOMIC_ADD: "1"
+  
+defaults:
+  port: 8000
+  host: 0.0.0.0
+  tensor_parallel: 1
+  pipeline_parallel: 1
+  gpu_memory_utilization: 0.5
+  max_model_len: 131072
+  max_num_batched_tokens: 8192
+  load_format: fastsafetensors
+  kv_cache_dtype: fp8
+  attention_backend: flashinfer
+  model_name: base_model
+
+command: |
+  vllm serve {model} \
+  --kv-cache-dtype fp8 \
+  --trust-remote-code \
+  --gpu-memory-utilization {gpu_memory_utilization} \
+  --max-model-len auto \
+  --max-num-seqs {max_num_seqs} \
+  --max-num-batched-tokens {max_num_batched_tokens} \
+  --enable-prefix-caching \
+  --host {host} \
+  --port {port} \
+  --enable-auto-tool-choice \
+  --enable-chunked-prefill \
+  --load-format fastsafetensors \
+  --tool-call-parser gemma4 \
+  --reasoning-parser gemma4 \
+  --enforce-eager \
+  --tensor-parallel-size {tensor_parallel}
