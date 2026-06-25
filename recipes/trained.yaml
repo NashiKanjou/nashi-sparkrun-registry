@@ -4,7 +4,7 @@ name: base
 metadata:
   description: finetuned model
 
-model: Qwen/Qwen3-1.7B
+model: /home/nashi/llm_training/model/merged-gemma4-12B
 
 runtime: vllm
 container: vllm-node
@@ -16,7 +16,6 @@ env:
   VLLM_MARLIN_USE_ATOMIC_ADD: "1"
   
 defaults:
-  path: /home/nashi/llm_training/model/merged-gemma4-12B
   port: 8000
   host: 0.0.0.0
   tensor_parallel: 1
@@ -32,7 +31,7 @@ defaults:
   reasoning_parser: gemma4
   
 command: |
-  vllm serve {path} \
+  vllm serve {model} \
     --host {host} \
     --port {port} \
     --served-model-name {model_name} \
