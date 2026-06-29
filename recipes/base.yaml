@@ -9,7 +9,7 @@ metadata:
   model_dtype: bf16
   
 #/home/nashi/llm_training/model/merged-gemma4-12B
-model: /home/nashi/llm_training/model/base/gemma-4-12B
+model: local:/home/nashi/llm_training/model/base/gemma-4-12B
 
 runtime: vllm
 container: vllm-node
