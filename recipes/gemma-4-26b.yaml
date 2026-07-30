@@ -44,4 +44,6 @@ command: |
     --load-format {load_format} \
     --enable-prefix-caching \
     -tp {tensor_parallel} \
-    -pp {pipeline_parallel}
+    -pp {pipeline_parallel} \
+    --attention-backend TRITON_ATTN \
+    --moe-backend triton 
