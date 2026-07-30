@@ -26,13 +26,14 @@ defaults:
   kv_cache_dtype: fp8
   max_model_len: 262144
   max_num_batched_tokens: 8192
-  max_num_seqs: 5
+  max_num_seqs: 10
   model_name: gemma-4-26b
 
 command: |
   vllm serve {model} \
     --host {host} \
     --port {port} \
+    --trust-remote-code \
     --served-model-name {model_name} \
     --max-model-len {max_model_len} \
     --max-num-batched-tokens {max_num_batched_tokens} \
@@ -40,10 +41,12 @@ command: |
     --enable-auto-tool-choice \
     --tool-call-parser gemma4 \
     --reasoning-parser gemma4 \
+    --enable-chunked-prefill \
     --kv-cache-dtype {kv_cache_dtype} \
     --load-format {load_format} \
     --enable-prefix-caching \
     -tp {tensor_parallel} \
+    --enforce-eager \
     -pp {pipeline_parallel} \
     --attention-backend TRITON_ATTN \
     --moe-backend triton 
