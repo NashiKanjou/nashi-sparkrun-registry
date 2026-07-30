@@ -20,25 +20,30 @@ defaults:
   port: 8000
   host: 0.0.0.0
   tensor_parallel: 1
+  pipeline_parallel: 1
   gpu_memory_utilization: 0.80
-  max_model_len: 135168
+  load_format: fastsafetensors
+  attention_backend: flashinfer
+  kv_cache_dtype: fp8
+  max_model_len: 262144
+  max_num_batched_tokens: 16384
   max_num_seqs: 10
+  model_name: gemma-4-26b
 
 command: |
   vllm serve {model} \
-  --kv-cache-dtype fp8 \
-  --quantization fp8 \
-  --trust-remote-code \
-  --gpu-memory-utilization {gpu_memory_utilization} \
-  --max-model-len {max_model_len} \
-  --max-num-seqs {max_num_seqs} \
-  --enable-prefix-caching \
-  --host {host} \
-  --port {port} \
-  --enforce-eager \
-  --enable-auto-tool-choice \
-  --enable-chunked-prefill \
-  --load-format fastsafetensors \
-  --tool-call-parser gemma4 \
-  --reasoning-parser gemma4 \
-  --tensor-parallel-size {tensor_parallel}
+    --host {host} \
+    --port {port} \
+    --served-model-name {model_name} \
+    --max-model-len {max_model_len} \
+    --max-num-batched-tokens {max_num_batched_tokens} \
+    --gpu-memory-utilization {gpu_memory_utilization} \
+    --enable-auto-tool-choice \
+    --tool-call-parser gemma4 \
+    --reasoning-parser gemma4 \
+    --kv-cache-dtype {kv_cache_dtype} \
+    --load-format {load_format} \
+    --attention-backend {attention_backend} \
+    --enable-prefix-caching \
+    -tp {tensor_parallel} \
+    -pp {pipeline_parallel}
