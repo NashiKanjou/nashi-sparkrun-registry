@@ -26,7 +26,7 @@ defaults:
   kv_cache_dtype: fp8
   max_model_len: 262144
   max_num_batched_tokens: 8192
-  max_num_seqs: 10
+  max_num_seqs: 5
   model_name: gemma-4-26b
 
 command: |
