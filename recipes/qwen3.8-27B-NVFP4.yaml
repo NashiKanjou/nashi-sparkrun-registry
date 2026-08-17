@@ -1,10 +1,10 @@
 recipe_version: "2"
-model: hiebo/Qwen3.6-34B-80L-Fable-5-Heretic
+model: unsloth/Qwen3.8-27B-NVFP4
 runtime: vllm
 container: vllm-node
 
 metadata:
-  description: Qwen3.6-34B-80L-Fable-5-Heretic
+  description: unsloth/Qwen3.8-27B-NVFP4
 
 defaults:
   port: 8000
@@ -12,12 +12,13 @@ defaults:
   d_type: bfloat16
   tensor_parallel: 1
   pipeline_parallel: 1
-  gpu_memory_utilization: 0.8
+  gpu_memory_utilization: 0.45
   max_model_len: 262144
-  max_num_batched_tokens: 16384
+  max_num_batched_tokens: 8192
   load_format: fastsafetensors
   attention_backend: flashinfer
-  model_name: qwen3.6
+  model_name: qwen3.8
+  mtp: 3
   
 env:
   VLLM_MARLIN_USE_ATOMIC_ADD: "1"
@@ -31,11 +32,17 @@ command: |
     --max-model-len {max_model_len} \
     --max-num-batched-tokens {max_num_batched_tokens} \
     --gpu-memory-utilization {gpu_memory_utilization} \
-    --enable-auto-tool-choice \
     --enforce-eager \
     --load-format {load_format} \
     --attention-backend {attention_backend} \
-    --enable-prefix-caching \
     --disable-log-stats \
-    -tp {tensor_parallel} \
-    -pp {pipeline_parallel}
+    --tensor_parallel_size {pipeline_parallel} \
+    --tensor-parallel-size {tensor_parallel} \
+    --max-num-seqs 4 \
+    --enable-chunked-prefill \
+    --enable-prefix-caching \
+    --reasoning-parser qwen3 \
+    --tool-call-parser qwen3_xml \
+    --enable-auto-tool-choice \
+    --distributed-executor-backend mp \
+    --speculative-config '{"method":"mtp","num_speculative_tokens":{mtp}}'
