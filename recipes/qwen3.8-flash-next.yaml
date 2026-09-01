@@ -1,7 +1,11 @@
 recipe_version: "2"
 model: edougawa/Qwen3.8-Flash-Next-W4A16-PLE4-MTP-Spark
 runtime: vllm
-container: vllm-node
+container: vllm/vllm-openai:qwen38-flash-next
+pull_image: true
+
+mods:
+  - mods/install-ray
 
 metadata:
   description: Qwen3.8
