@@ -34,7 +34,7 @@ command: |
     --max-num-batched-tokens {max_num_batched_tokens} \
     --gpu-memory-utilization {gpu_memory_utilization} \
     --disable-log-stats \
-    --tensor_parallel_size {pipeline_parallel} \
+    --pipeline_parallel_size {pipeline_parallel} \
     --tensor-parallel-size {tensor_parallel} \
     --max-num-seqs 4 \
     --enable-chunked-prefill \
