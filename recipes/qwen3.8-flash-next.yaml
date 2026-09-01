@@ -1,7 +1,7 @@
 recipe_version: "2"
 model: edougawa/Qwen3.8-Flash-Next-W4A16-PLE4-MTP-Spark
 runtime: vllm
-container: vllm-node
+container: vllm-node-b12x
 
 metadata:
   description: Qwen3.8
