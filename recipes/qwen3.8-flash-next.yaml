@@ -4,9 +4,6 @@ runtime: vllm
 container: vllm/vllm-openai:qwen38-flash-next
 pull_image: true
 
-mods:
-  - mods/install-ray
-
 metadata:
   description: Qwen3.8
 
