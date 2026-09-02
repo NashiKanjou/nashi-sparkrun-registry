@@ -18,6 +18,9 @@ defaults:
   max_num_batched_tokens: 8192
   model_name: qwen3.8
   
+executor_config:
+  entrypoint: ""
+
 env:
   VLLM_PLE_MMAP: "1"
   VLLM_PLE_MMAP_WORKERS: "32"
