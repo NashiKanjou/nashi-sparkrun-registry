@@ -13,7 +13,7 @@ defaults:
   d_type: bfloat16
   tensor_parallel: 1
   pipeline_parallel: 1
-  gpu_memory_utilization: 0.75
+  gpu_memory_utilization: 0.6
   max_model_len: 65536
   max_num_batched_tokens: 2048
   model_name: qwen3.8
