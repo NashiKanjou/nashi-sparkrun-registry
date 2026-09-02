@@ -25,7 +25,7 @@ env:
   VLLM_USE_FLASHINFER_SAMPLER: "1"
 
 command: |
-  vllm serve {model} \
+   {model} \
     --host {host} \
     --port {port} \
     --dtype {d_type} \
