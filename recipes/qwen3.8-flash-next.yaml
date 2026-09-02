@@ -13,17 +13,17 @@ defaults:
   d_type: bfloat16
   tensor_parallel: 1
   pipeline_parallel: 1
-  gpu_memory_utilization: 0.6
-  max_model_len: 65536
-  max_num_batched_tokens: 2048
+  gpu_memory_utilization: 0.85
+  max_model_len: 262144
+  max_num_batched_tokens: 8192
   model_name: qwen3.8
-  
+
 executor_config:
   entrypoint: ""
 
 env:
-  VLLM_PLE_MMAP: "0"
-  VLLM_PLE_MMAP_WORKERS: "2"
+  VLLM_PLE_MMAP: "1"
+  VLLM_PLE_MMAP_WORKERS: "32"
   VLLM_PLE_MMAP_PREWARM: "0"
   VLLM_USE_FLASHINFER_SAMPLER: "1"
 
@@ -39,11 +39,12 @@ command: |
     --disable-log-stats \
     --pipeline_parallel_size {pipeline_parallel} \
     --tensor-parallel-size {tensor_parallel} \
-    --max-num-seqs 1 \
+    --max-num-seqs 4 \
     --enable-chunked-prefill \
     --enable-prefix-caching \
     --reasoning-parser qwen3 \
     --tool-call-parser qwen3_coder \
     --enable-auto-tool-choice \
     --distributed-executor-backend mp \
-    --no-enable-flashinfer-autotune
+    --no-enable-flashinfer-autotune \
+    --compilation-config '{"cudagraph_mode":"PIECEWISE","splitting_ops":["vllm::unified_attention_with_output","vllm::unified_mla_attention_with_output","vllm::mamba_mixer2","vllm::mamba_mixer","vllm::short_conv","vllm::qwen3_8_flash_next_ple_short_conv","vllm::qwen3_8_flash_next_qsa_with_output","vllm::linear_attention","vllm::qwen_gdn_attention_core","vllm::qwen_gdn_attention_core_fused_norm_packed","vllm::sparse_attn_indexer","vllm::ple_mmap_lookup"]}'
