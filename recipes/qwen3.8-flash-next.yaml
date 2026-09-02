@@ -13,16 +13,16 @@ defaults:
   d_type: bfloat16
   tensor_parallel: 1
   pipeline_parallel: 1
-  gpu_memory_utilization: 0.80
-  max_model_len: 131072
-  max_num_batched_tokens: 4096
+  gpu_memory_utilization: 0.75
+  max_model_len: 65536
+  max_num_batched_tokens: 2048
   model_name: qwen3.8
   
 executor_config:
   entrypoint: ""
 
 env:
-  VLLM_PLE_MMAP: "1"
+  VLLM_PLE_MMAP: "0"
   VLLM_PLE_MMAP_WORKERS: "2"
   VLLM_PLE_MMAP_PREWARM: "0"
   VLLM_USE_FLASHINFER_SAMPLER: "1"
