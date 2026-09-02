@@ -23,7 +23,7 @@ executor_config:
   entrypoint: ""
 
 env:
-  VLLM_PLE_MMAP: "1"
+  VLLM_PLE_MMAP: "0"
   VLLM_PLE_MMAP_WORKERS: "32"
   VLLM_PLE_MMAP_PREWARM: "0"
   VLLM_USE_FLASHINFER_SAMPLER: "1"
