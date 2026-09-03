@@ -44,4 +44,5 @@ command: |
     --reasoning-parser qwen3 \
     --tool-call-parser qwen3_coder \
     --enable-auto-tool-choice \
+    --enable-expert-parallel \
     --distributed-executor-backend mp
