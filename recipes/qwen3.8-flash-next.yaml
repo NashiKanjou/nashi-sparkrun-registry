@@ -17,7 +17,7 @@ defaults:
   max_model_len: 131072
   max_num_batched_tokens: 4096
   model_name: qwen3.8
-  kv_type: auto
+  kv_type: fp8
   
 executor_config:
   entrypoint: ""
