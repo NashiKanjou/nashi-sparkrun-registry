@@ -14,7 +14,7 @@ defaults:
   tensor_parallel: 1
   pipeline_parallel: 1
   gpu_memory_utilization: 0.9
-  max_model_len: 131072
+  max_model_len: 8192
   max_num_batched_tokens: 2048
   model_name: qwen3.8
   kv_type: auto
@@ -43,7 +43,7 @@ command: |
     --gpu-memory-utilization {gpu_memory_utilization} \
     --pipeline_parallel_size {pipeline_parallel} \
     --tensor-parallel-size {tensor_parallel} \
-    --max-num-seqs 2 \
+    --max-num-seqs 1 \
     --reasoning-parser qwen3 \
     --tool-call-parser qwen3_xml \
     --reasoning-parser qwen3 \
