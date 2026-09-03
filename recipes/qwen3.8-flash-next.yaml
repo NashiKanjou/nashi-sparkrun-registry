@@ -30,6 +30,7 @@ command: |
     --host {host} \
     --port {port} \
     --dtype {d_type} \
+    --quantization compressed-tensors \
     --kv-cache-dtype {kv_type} \
     --served-model-name {model_name} \
     --max-model-len {max_model_len} \
@@ -45,4 +46,5 @@ command: |
     --tool-call-parser qwen3_coder \
     --enable-auto-tool-choice \
     --enable-expert-parallel \
+    --quantization compressed-tensors \
     --distributed-executor-backend mp
