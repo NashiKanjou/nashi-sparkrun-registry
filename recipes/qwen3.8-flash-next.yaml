@@ -1,5 +1,5 @@
 recipe_version: "2"
-model: edougawa/Qwen3.8-Flash-Next-W4A16-PLE4-MTP-Spark
+model: RadixArk/Qwen3.8-Flash-Next-NVFP4
 runtime: vllm
 container: vllm/vllm-openai:qwen38-flash-next
 pull_image: true
@@ -14,8 +14,8 @@ defaults:
   tensor_parallel: 1
   pipeline_parallel: 1
   gpu_memory_utilization: 0.9
-  max_model_len: 8192
-  max_num_batched_tokens: 2048
+  max_model_len: 262144
+  max_num_batched_tokens: 4096
   model_name: qwen3.8
   kv_type: auto
   
@@ -43,7 +43,7 @@ command: |
     --gpu-memory-utilization {gpu_memory_utilization} \
     --pipeline_parallel_size {pipeline_parallel} \
     --tensor-parallel-size {tensor_parallel} \
-    --max-num-seqs 1 \
+    --max-num-seqs 4 \
     --reasoning-parser qwen3 \
     --tool-call-parser qwen3_xml \
     --reasoning-parser qwen3 \
