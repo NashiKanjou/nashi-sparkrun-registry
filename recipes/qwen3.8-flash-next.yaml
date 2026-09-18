@@ -16,7 +16,6 @@ defaults:
   max_model_len: 131072
   max_num_batched_tokens: 4096
   model_name: qwen3.8
-  kv_type: auto
   
 executor_config:
   entrypoint: ""
@@ -39,7 +38,6 @@ command: |
     --enable-prefix-caching \
     --enable-auto-tool-choice \
     --enable-expert-parallel \
-    --kv-cache-dtype {kv_type} \
     --served-model-name {model_name} \
     --max-model-len {max_model_len} \
     --max-num-batched-tokens {max_num_batched_tokens} \
