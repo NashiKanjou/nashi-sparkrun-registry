@@ -41,7 +41,7 @@ command: |
     --gpu-memory-utilization {gpu_memory_utilization} \
     --pipeline_parallel_size {pipeline_parallel} \
     --tensor-parallel-size {tensor_parallel} \
-    --max-num-seqs 4 \
+    --max-num-seqs 1 \
     --reasoning-parser qwen3 \
     --tool-call-parser qwen3_xml \
     --compilation-config '{"cudagraph_mode":"FULL"}' \
