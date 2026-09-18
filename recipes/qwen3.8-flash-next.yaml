@@ -9,7 +9,6 @@ metadata:
 defaults:
   port: 8000
   host: 0.0.0.0
-  d_type: bfloat16
   tensor_parallel: 1
   pipeline_parallel: 1
   gpu_memory_utilization: 0.8
@@ -25,7 +24,6 @@ command: |
    vllm serve {model} \
     --host {host} \
     --port {port} \
-    --dtype {d_type} \
     --disable-custom-all-reduce \
     --disable-log-stats \
     --no-enable-flashinfer-autotune \
