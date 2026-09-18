@@ -36,6 +36,21 @@ command: |
     --gpu-memory-utilization {gpu_memory_utilization} \
     --pipeline-parallel_size {pipeline_parallel} \
     --tensor-parallel-size {tensor_parallel} \
-    --max-num-seqs 1 \
+    --distributed-executor-backend mp \
+    --trust-remote-code \
+    --load-format safetensors \
+    --safetensors-load-strategy lazy \
+    --engram-config.cpu_offload false \
+    --moe-backend b12x \
+    --linear-backend b12x \
+    --no-enable-flashinfer-autotune \
+    -cc.mode none \
+    -cc.cudagraph_mode FULL_DECODE_ONLY \
+    --enable-prefix-caching \
+    --enable-chunked-prefill \
     --reasoning-parser qwen3 \
-    --tool-call-parser qwen3_xml
+    --tool-call-parser qwen3_xml \
+    --enable-auto-tool-choice \
+    --max-num-seqs 4 \
+    --disable-custom-all-reduce \
+    --disable-log-stats
