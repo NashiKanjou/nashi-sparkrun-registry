@@ -1,7 +1,8 @@
 recipe_version: "2"
 model: RadixArk/Qwen3.8-Flash-Next-NVFP4
 runtime: vllm
-container: vllm-node
+container: pilcothink/vllm_spark_qwen38:0.29
+pull_image: true
 
 metadata:
   description: Qwen3.8
