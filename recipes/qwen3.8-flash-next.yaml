@@ -22,6 +22,7 @@ executor_config:
   
 env:
   VLLM_USE_V2_MODEL_RUNNER: 1
+  VLLM_PLE_SSD: 1
   VLLM_PLE_MMAP: 1
   VLLM_PLE_MMAP_WORKERS: 24
   CUTE_DSL_ARCH: sm_121a
