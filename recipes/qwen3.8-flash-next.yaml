@@ -1,8 +1,7 @@
 recipe_version: "2"
 model: RadixArk/Qwen3.8-Flash-Next-NVFP4
 runtime: vllm
-container: vllm/vllm-openai:qwen38-flash-next
-pull_image: true
+container: vllm-node
 
 metadata:
   description: Qwen3.8
