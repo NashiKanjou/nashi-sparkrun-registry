@@ -30,14 +30,6 @@ command: |
    vllm serve {model} \
     --host {host} \
     --port {port} \
-    --disable-custom-all-reduce \
-    --disable-log-stats \
-    --no-enable-flashinfer-autotune \
-    --no-async-scheduling \
-    --enable-chunked-prefill \
-    --enable-prefix-caching \
-    --enable-auto-tool-choice \
-    --enable-expert-parallel \
     --served-model-name {model_name} \
     --max-model-len {max_model_len} \
     --max-num-batched-tokens {max_num_batched_tokens} \
