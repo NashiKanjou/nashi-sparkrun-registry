@@ -34,7 +34,6 @@ command: |
     --enable-prefix-caching \
     --enable-auto-tool-choice \
     --enable-expert-parallel \
-    --quantization compressed-tensors \
     --kv-cache-dtype {kv_type} \
     --served-model-name {model_name} \
     --max-model-len {max_model_len} \
@@ -45,6 +44,5 @@ command: |
     --max-num-seqs 4 \
     --reasoning-parser qwen3 \
     --tool-call-parser qwen3_xml \
-    --reasoning-parser qwen3 \
     --compilation-config '{"cudagraph_mode":"FULL"}' \
     --distributed-executor-backend mp
