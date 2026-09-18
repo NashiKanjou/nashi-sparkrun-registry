@@ -47,5 +47,4 @@ command: |
     --tensor-parallel-size {tensor_parallel} \
     --max-num-seqs 1 \
     --reasoning-parser qwen3 \
-    --tool-call-parser qwen3_xml \
-    --distributed-executor-backend mp
+    --tool-call-parser qwen3_xml
