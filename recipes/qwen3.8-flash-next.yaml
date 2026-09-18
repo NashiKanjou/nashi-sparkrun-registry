@@ -37,10 +37,9 @@ command: |
     --max-model-len {max_model_len} \
     --max-num-batched-tokens {max_num_batched_tokens} \
     --gpu-memory-utilization {gpu_memory_utilization} \
-    --pipeline_parallel_size {pipeline_parallel} \
+    --pipeline-parallel_size {pipeline_parallel} \
     --tensor-parallel-size {tensor_parallel} \
     --max-num-seqs 1 \
     --reasoning-parser qwen3 \
     --tool-call-parser qwen3_xml \
-    --compilation-config '{"cudagraph_mode":"FULL"}' \
     --distributed-executor-backend mp
