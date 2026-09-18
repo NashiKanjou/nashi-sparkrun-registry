@@ -19,6 +19,12 @@ defaults:
   
 executor_config:
   entrypoint: ""
+  
+env:
+  VLLM_USE_V2_MODEL_RUNNER: 1
+  VLLM_PLE_MMAP: 1
+  VLLM_PLE_MMAP_WORKERS: 24
+  CUTE_DSL_ARCH: sm_121a
 
 command: |
    vllm serve {model} \
