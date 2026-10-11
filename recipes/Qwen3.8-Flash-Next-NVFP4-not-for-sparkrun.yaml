@@ -1,5 +1,5 @@
 recipe_version: "2"
-name: arusu
+name: Qwen3.8-Flash-Next
 model: local-inference-lab/Qwen3.8-Flash-Next-NVFP4
 container: vllm-node-b12x
 
